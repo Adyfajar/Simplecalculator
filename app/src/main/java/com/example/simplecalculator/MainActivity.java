@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView expressionTextView, resultTextView;
     private StringBuilder expression = new StringBuilder();
-    private boolean justEvaluated = false;  // Menandai bahwa hasil baru saja ditampilkan
+    private boolean justEvaluated = false;  
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             Button button = findViewById(id);
             button.setOnClickListener(v -> {
                 if (justEvaluated) {
-                    expression.setLength(0); // reset jika baru selesai hitung
+                    expression.setLength(0); 
                     justEvaluated = false;
                 }
                 expression.append(((Button) v).getText().toString());
@@ -59,19 +59,19 @@ public class MainActivity extends AppCompatActivity {
             resultTextView.setText("0");
         });
 
-        // Tombol '=' untuk evaluasi hasil
+        // Tombol '=' untuk hasil
         findViewById(R.id.buttonEquals).setOnClickListener(v -> {
             try {
                 String expr = expression.toString()
                         .replace(",", ".")
-                        .replace("x", "") // x = delete, seharusnya tidak muncul
+                        .replace("x", "") 
                         .replace("÷", "/");
 
                 double result = eval(expr);
                 String formattedResult;
 
                 if (result == (long) result) {
-                    formattedResult = String.format("%d", (long) result); // tanpa desimal jika bulat
+                    formattedResult = String.format("%d", (long) result); 
                 } else {
                     formattedResult = String.valueOf(result);
                 }
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Evaluasi ekspresi matematika sederhana
+    //matematika sederhana
     private double eval(final String str) {
         return new Object() {
             int pos = -1, ch;
